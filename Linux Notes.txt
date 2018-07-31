@@ -1,0 +1,28 @@
+Useful Macro:
+To store the output of a command in a variable: "variable_name = $(command [options])" OR "variable_name = 'command [options]'"
+Output a variable: "$variable_name"
+
+Important Commands:
+End a multi-line input in Terminal: Ctrl + D
+Paste text: Shift + Insert
+Copy text: Ctrl + Insert
+
+Navigational Stuff:
+Navigate on word forward: Ctrl + -> (arrow key right)
+Navigate one word backward: Ctrl + <- (Arrow key left)
+Go to the beginning of line: Ctrl-A
+Go to the end of line: Ctrl-E 
+Skip one word backward: Alt-B
+Skip one word forward: Alt-F
+Delete to the beginning of line: Ctrl-U
+Delete to the end of line: Ctrl-K
+Delete to the end of word: Alt-D
+
+Navigation Part 2:
+https://ryanstutorials.net/linuxtutorial/navigation.php
+
+Grep:
+
+Redirection:
+https://ryanstutorials.net/linuxtutorial/piping.php
+https://ryanstutorials.net/linuxtutorial/cheatsheetgrep.php

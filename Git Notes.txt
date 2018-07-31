@@ -1,0 +1,167 @@
+What is git?
+Most widely used version control system.
+It's a DVCS (Distributed Version Ccontrol System), which means that the entire version history is distributed amongst all the developers who have a copy of the code, not in one single spot.
+What is a VCS?
+Software tool that keeps track of every modification to the code in a database, allowing developers to return and compare to earlier versions if a mistake is made.
+The code for a software proejct is organized in a "file tree," allowing each developer to make changes to parts of the file tree.
+Why use it? 
+1. Contains a complete change history of every file
+2. Can merge/branch so independent developers can work and contribute to it individually
+3. Can trace every change and have a user-generated annotation for each change, helps understand the code
+
+Pull request - A pull request is a way to ask another developer to merge one of your branches into their repository. 
+This allows for discussions on the code if there are any errors, etc.
+Basically a request to have a user branch merge into the master branch.
+
+Difference between fork and branch?
+Fork - You fork or take a copy of the project and heavily alter it to your own needs. 
+Basically, it must contain large changes and heavily alter it so much so it could potentially become a new distro/project. 
+It should be probable that it diverges so that it will never re-combine with the parent branch. 
+Then, if the owner wants it again, you can combine it. 
+
+Branch - To add a minor feature/update the project, or to update a project, this is the best feature. 
+Great to fix bugs or add new feature. 
+You know FOR SURE you will end up merging with the original project, but everyone can end up editing the branch because it's meant to be minor and possibly discarded. 
+You can merge the branch with the origin. 
+Note: branches are TEMPORARY. 
+Best option for hackathons.
+
+Rebase - Similar to Merge in git. However, Rebase takes the entire branch and "replaces the base" in front of the target branch. 
+Basically, you take the branch you are rebasing, then stick ALL of the commits of that branch in front of the target branch. 
+It is good to make the project history look cleaner by making it more linear. A project history full of merges will look very messy.
+Examole:
+git checkout branch_name
+git rebase master
+Rebases branch_name onto the master branch
+You can also interactive rebase, which is basically altering the commits of the branch you are rebasing by removing/combining/etc. commits to make the commit history look cleaner.
+However, to do this, you MUST edit the commits with a text editor using "git rebase -i master" then understand the different git commands for managing commit history.
+Interactive rebase does give you complete control and freedom over your branch history. It really cleans up a projecct history, so use it to your advantage.
+RULE: NEVER use rebase on public branches. Basically, if anyone else is coding on the branch you are rebasing, use a non-destructive way to make changes and do NOT use rebase because that is destructive.
+Remember to constantly rebase and do it often because rebasing a very long branch will likely cause code conflicts.
+Rebase if it's only your own branch because you can alter your own previous commits and since you're adding your own changes onto the master branch.
+Time to rebase: if a developer is creating a brand new feature, you might want to rebase your own fixes/feature onto the master branch so it is included in the developer's code.
+It is better than merge if you create a good, bug-free feature and you wish to permanently base it on the master branch, because it removes spaghetti history.
+
+Steps in order if you use the links:
+https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/
+https://ashishb.net/tech/github-101-for-hackathons/
+
+Simple step:
+Prerequisite: 
+1. Install Git using the Git BASH
+2. Setup your Git email: git config --global user.email "you@example.com" (NOTE: removing --global will create an identity ONLY for a specific repository)
+3. Setup your Git Username: git config --global user.name "Your Name" (read note above)
+
+1. Generate ssh key in Git BASH or Terminal : ssh-keygen -t rsa -b 4096 -C "ichangschool@gmail.com"
+2. Find ssh key path: ls -al ~/.ssh 
+3. Copy Public SSH key to clipboard: clip < path_obtained_from_step2/id_rsa.pub
+4. Go to GitHub.com -> Click on top-right corner (shows your GitHub icon) -> Settings -> SSH and GPG keys -> New SSH Key -> Paste content into the "Key" section -> Add SSH Key
+5. Go to GitHub.com -> Repositories box on the Left Middle -> Click on your repository -> Click on the "Clone or download" green button on the right hand side -> Click "Use SSH" button on upper hand corner -> Copy the git link
+6. In terminal, type in "git clone [paste in clipboard text using Shift + Insert]"
+IMPORTANT NOTE: the directory of the repository will be in your current directory, which should be the .ssh folder (or where you stored your SSH keys)
+7. cd into your Git respository
+8. "git checkout -b [branchname]" to create a branch for each teammate in the hackathon. 
+Remove the "-b" if the branch already exists to switch into that branch.
+NOTE: Basically, the checkout command means to switch into a branch for that repository.
+9. Check which branch you're on and how it's been modified with "git status"
+10. Edit all your files. Happy coding away!
+11. "git add [filename]" to add a file. "git rm [filename]" to remove a file. You can just do "git add ." to add every file you've edited.
+12. "git status" and "git diff" to see which files you will commit to. Good for confirmation purposes.
+13. "git commit -m "<commit message goes here>"" to commit your changes
+14. "git push origin [branchname]" to send your branch into the GitHub server and apply it on the server. Basically, you upload your committed files/changes when you push
+Note: If there is a conflict in your code, you must do "git pull origin master" to find all code conflicts (marked by <<<< and >>>>), then you go back and fix them. Once they're fixed/merge them, you must re-commit using "git commit -m ..."
+***To merge the user branches into the final "master" branch (the original project)***
+15. Switch to the 'master' branch with "git checkout master"
+16. Next, you merge the user branch with the master branch with "git merge [individual_branchname]"
+17. If you want to discard the current branch if it will never be used again, type "git branch -d [discarded_branch]"
+18. Double-check your changes using "git status"
+19. Finally, you push the merging of the branches to the GitHub server with "git push origin master"
+Alternatively, you could just skip to Step 14, and type in "git push origin master" if you trust everyone commiting to the same project in a hackathon.
+
+Inspecting/reviewing a repository:
+git diff - Shows the changes (differences) between commits and the working tree.
+In other words, Shows any uncommitted changes since the last commit.
+git status - Shows the changes implemented with "git add" and "git commit". Also provides status messages for file staging/unstaging.
+git log [command1, command2, etc.] - Shows the history of the respository (the commit history). You can heavily alter the git log command to your own liking.
+git log -n [number] - Shows the last *number* of commits
+git log --stat - Detailed stats of each commit by showing the specific changes per commit
+git log -oneline - Logs all in one line
+git log --author="Author Name" - View all commits by the Author
+git log --grep="string" - Search for commits with all commit messages that contains "string"
+git log onebranch..anotherbranch - Show commits only between onebranch and anotherbranch
+git log file.type - Show commit for the specified file
+git log --graph --decorate --oneline - Very simple yet graphically pleasing way to show log
+git log --branches=* - Shows all commits of all branches
+
+Unit 1: Getting Started
+Chapter 1: Saving Changes
+Git Commit:
+git commit --amend - Amend/change the current commit if you make any more changes (e.g. git add new_file and you wish to add new_file into the current commit)
+
+Diff:
+git diff - Shows any uncommitted changes since the last commit.
+
+Stash:
+Temporarily stashes changes you made to the file so if you want to work on something else, you can switch back to the stashes later.
+git stash save "Message" - stashes the file with a message
+git stash list - shows all your stashes
+git stash pop [stash@{stashnumber}] - Removes the stash from stash number and applies it to your working copy, or does it to all stashes if you do not include the bracketed option
+git stash drop stash@{stashnumber} - Delete a specified stash
+git stash clear - Deletes all stashes
+git stash -p - Stash individual/collection of files. Basically, stash whatever you choose to stash instead of all changes.
+
+.gitignore:
+Ignore files so they won't be committed. This is good for things like hidden files, compiled objects, etc.
+NOTE: git stash does NOT include ignored files
+Commands following are all in the .gitignore file:
+filename.filetype to ignore a single file
+NOTE: \ is used to escape special characters in .gitignore. You must use \ for all special characters in file names (excluding periods when necessary).
+*.filetype to ignore all files with the filetype.
+Comment: # This is a single line comment
+
+Chapter 2: Inspecting a Repository
+Status: 
+Look above at Inspective/reviewing a repository
+
+Tag: 
+References to specific points in the repository history. Think of it as a timeline point.
+Annotated Tag (public tag) - include more metadata - git tag -a v1.4 -m "my version 1.4"
+Lightweight Tag (private tag) - git tag v1.4
+List all stored tags - git tag
+List all stored tags with a wildcard - git tag -l *string_to_look_for*
+Tag an old commit - git tag [-a version] SHA_Hash_of_commit (note: the sha_hash is revealed with "git log")
+Edit an old tag - git tag [-a] -f [version] SHA_Hash_of_tagged_commit (basically, you have to use the -f force option)
+Push tags - git push origin tag_name OR git push origin --tags (passes all tags)
+Delete tag - git tag -d tag_name
+
+Blame:
+Used to examine contents of the file to see who was the last author of each modification/line.
+git blame file_name
+
+Chapter 3: Undoing changes
+Checkout:
+Checkout is used to switch to another commit snapshot
+Review an older commit - git checkout HEAD_of_commit(e.g. a1e8fb5)
+Revert back to master commit - git checkout master
+Revert state to a previous commit - First, checkout to the commit you want to revert to. Then, type in: git checkout -b new_reverted_branch to create a new branch under the previous commit. Note: This will replace ALL commits after the reverted commit.
+^ Don't use if on a public commit. Only use if you want a minimal Git history.
+NOTE: Best option for reviewing previous commits and changing the commit history.
+
+Revert:
+Undo a public commit (allows you to go back to the original state if you decide to return to the current commit) - git revert HEAD_of_commit 
+^ To revert to the original state (pre-revert), you can just reset/revert/checkout to the commit before the revert commit.
+This is because revert works by placing a "revert" commit as the latest commit in the repository history. The revert counts as a commit, so just revert before the "revert" commit to return to the original, pre-reverted state.
+NOTE: Best option for public branches.
+
+Reset:
+Undo a commit in the cleanest version - git reset --hard HEAD_of_commit
+NOTE: You cannot use reset if you are pushing to a shared remote repository and it has the pre-resetted commits on it since your local repository will have missing commits from the pre-resetted repository.
+^ In this case, you must use git revert.
+NOTE: Use only for private branches.
+
+
+
+
+
+
+
