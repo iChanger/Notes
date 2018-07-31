@@ -77,6 +77,8 @@ Note: If there is a conflict in your code, you must do "git pull origin master" 
 18. Double-check your changes using "git status"
 19. Finally, you push the merging of the branches to the GitHub server with "git push origin master"
 
+Alternatively, you could just skip to Step 14, and type in "git push origin master" if you trust everyone commiting to the same project in a hackathon.
+
 Inspecting/reviewing a repository:
 git diff - Shows the changes (differences) between commits and the working tree.
 In other words, Shows any uncommitted changes since the last commit.
