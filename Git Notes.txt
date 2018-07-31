@@ -155,14 +155,16 @@ This is because revert works by placing a "revert" commit as the latest commit i
 NOTE: Best option for public branches.
 
 Reset:
-Undo a commit in the cleanest version - git reset --hard HEAD_of_commit
+Undo a commit in the cleanest version, by deleting all commits after the resetted commit - git reset --hard HEAD_of_commit
 NOTE: You cannot use reset if you are pushing to a shared remote repository and it has the pre-resetted commits on it since your local repository will have missing commits from the pre-resetted repository.
 ^ In this case, you must use git revert.
 NOTE: Use only for private branches.
 
-
-
-
-
-
-
+Clean:
+Clean is used to erase all untracked files. An untracked file is defined as a file that is not tracked in the repository because it was never added (git add file.name; if file.name was untracked then "git add file.name" was never typed in).
+NOTE: If you want to CLEANLY undo all changes, then using git clean is good because it deletes unnecessary files.
+Show files to be cleaned - git clean -n
+Actually clean/delete the untracked files - git clean -f
+Clean untracked files AND directories - git clean -df
+Clean ignored AND untracked files - git clean -xf
+Clean files in interactive mode (lets you select which files/directories and which options) - git clean -i
