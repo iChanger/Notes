@@ -1,0 +1,89 @@
+Select all text - gg"*yG (gg goes to first line, "*y yanks UNTIL..., G goes to the end of the line) Basically, you store all the text into the "* register (Note: that register (or "+ register) is reserved for the system clipboard)
+" (double quotes) - means register. Think of it as a variable storing info
+
+Vim manual - :help [keyword] (e.g. :help registers)
+
+Registers:
+Register - "[letter of alphabet][command] - Essentially stores text into the register "[letter of alphabet] according to whatever command you typed in
+Recording macro with a Register - q[letter of alphabet register][string of macro keys]q - basically automatically execute a bunch of commands once you type in @[letter of alphabet register]
+Or: you could type the string commands in plaintext, then copy the line using "[Letter of alphabet]yy, then you can execute the plaintext as a string of commands using @[letter of alphabet]
+Paste the text stored in the register: "[Letter of alphabet]P
+Edit the macro in the register: "[Letter of alphabet]p, then edit whatever command you want to edit, then "[Letter of alphabet]yy
+"_ Register - Black Hole Register (use with "_d) to delete something but NOT have it overwrite the current clipboard
+"0 Register - Yank Register to paste something that will NOT be overwritten with d command (use with "0p)
+
+Paste system-copied text into Vim:
+1. :set paste
+2. i (Insert Mode)
+3. Ctrl + V / Command + V to paste text
+4. Esc to exit Insert Mode
+5. :set nopaste
+
+Navigation stuff:
+Go to the beginning of the next word - w
+Go to the end of the current word (or next word if at the end of current word) - e
+Go to the beginning of the next word excluding special characters (EVERY BLOCK OF TEXT that isn't separated by a space counts as a word) - W
+Go th the end of the current word (or next word if at the end of current word) excluding special characters - E
+Go to the start of the current word (or previous word if at the start of the current word) - b
+Go to the start of the current word (or previous word if at the start of the current word) excluding special characters - B
+Go to the beginning of the line - ^ (Shift + 6)/0
+Go to the end of the line - $ (Shift + 4)
+Go to next character - f[character]
+Go to previous character - F[character]
+
+Go to beginning of the entire document - gg
+Go to the end of the entire document - G
+
+Go to beginning of the NEXT line - +
+
+Go to line you were previously on - ``
+Go to line you last edited - '.
+Go to character you last edited - `.
+
+Go to the previous paragraph: {
+Go to the next paragraph: }
+
+Delete:
+Delete a character(s) - d[number of characters to delete]
+Delete a line - dd
+Delete whatever but DON'T overwrite the current clipboard - "_d
+Delete a word: dw (if cursor at beginning of word) or bdw (if cursor not in
+beginning of word)
+
+Insert line after and go into Insert Mode - o
+Insert line before and go into Insert Mode - O
+
+Useful Editing:
+Swap two characters around - xp
+Change case of current character -  ~ (Shift + `)
+Paste at the end of the file - Gp or GP
+Add text at the end of the line - A
+Start the change command (delete then go to insert mode) - c
+Change to end of the line (delete all until end of line) - C or c$
+Change to end of the word (delete all until end of word) - ce
+Increment the next number on the same line - [number of steps ] + Ctrl + A
+Decrement the next number on the same line - [Number of steps] + Ctrl + X
+Undo ALL changes to the current line: U
+
+Searching:
+Clear highlighting after a search - :noh
+Find the word you are currently on - *#g*g# OR / + Ctrl + R + Ctrl + W (great
+if you want to put word into the command line as well)
+Search for the other bracket in a pair of brackets (include {}, [], and ()) - %
+
+Completion (must be in insert mode):
+Word Completion (auto fill out word) - Ctrl + N or Ctrl + P
+Line completion (auto fill out line) - Ctrl + X + Ctrl + L (do Ctrl + X and
+Ctrl + L in succession) 
+
+Settings:
+Ignore case-sensitive when searching - :set ignorecase
+Enable case-sensitive when searching - :set smartcase
+Turn on color syntax - :syntax on
+Set paste mode on - :set paste
+Set paste mode off - :set nopaste
+
+To study next: 
+1. http://vim.wikia.com/wiki/Best_Vim_Tips - Searching, Substitution (find and replace), Global command
+2. http://vim.wikia.com/wiki/Search_and_replace
+
