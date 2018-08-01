@@ -8,10 +8,50 @@ Chapter 2:
 Note: the author consistently uses camel case to name variables/functions/etc.
 Choose good variable names.
 Make the variable name explicit, not implicit. The variable name should reveal the intent of the variable, and should NOT require a comment to explain it.
+
 Avoid disinformation. This means do not confuse other terms with what it's not supposed to be (e.g. naming a variable accountList even though the data structure used is NOT a list.)
 Don't use two names that vary very little in shape. (like same exact words except for one word are the variable names)
+
 Make meaningful distinctions between names. Don't use noise-words that mean the same/nothing (e.g. Customer and CustomerObject) and definitely do not use incremental numbering. 
 Names must be pronouncable, not a bunch of random letters. For communication purposes.
 Note: You CAN use single-letter names (e.g. i) but they can only be used as local variables inside short methods.
-Make the name easy to search for (a pretty long variable name is good for this) The length of a name should correspond to the size of its scope (how many times it will be used)
 
+Make the name easy to search for (a pretty long variable name is good for this) The length of a name should correspond to the size of its scope (how many times it will be used)
+Avoid mental mapping. Only use variables like i, j, k in very small scopes.
+
+Class Names should have noun or noun phrases that describe the class pretty well like "Customer". Should not be a verb.
+
+Method Names should have verb or verb phrases like "postPayment." 
+Accessors, mutators, and predicates should be named for their value and prefixed with "get," "set," and "is" like "isPosted"
+When constructors are overloaded, use methods with names that describe the argument like "Complex.FromRealNumber(23.0)"
+
+Pick one word per abstract concept and STAY CONSISTENT with the word. 
+For example, do not have "controller" and "driver" in two different variable names, either choose only "controller" or "driver" in both names.
+
+Choosing technical terms like "JobQueue" is generally a good idea for naming.
+
+Provide meaningful context for your variables. For example, "addrState" has more context than "state," although a state object in the Address class would be better.
+
+Splitting a function with many lines of code into many smaller, WELL-NAMED functions that serve a single purpose is very good coding technique.
+For example, instead of splitting if-else with functional code, put each functional code of the if-else into a different function and define the if-else cases to just run the functions.
+However, be wary of adding TOO much context. If it makes the name extremely long/confuses the auto-completion then shorten the name yet still make it concise and contextual.
+Make it as short as possible but as contextual as possible. For example, "MAC" is a good variable name for "MAC Address" and it's concise.
+
+Chapter 3: Functions
+Rule 1: They should be SMALL. 
+This means that the character-length of any line should NOT span across the entire wide-screen, and rather be minimal.
+This means that the number of lines in a function should NOT be a lot, and be around 6 lines max.
+This means that if/while/else statements should be max 1 line long, and that line is to call another function.
+This means that the function should NOT hold any nested structures, and if not, then one nested structure. The indent level of a function should max be 2.
+
+Rule 2 (very important): Functions should ONLY do ONE thing, and they must do that one task WELL and EXCLUSIVELY.
+Test for if a function does more than one thing: 
+1. If you can extract another function from the current function, but name it with a reasonably different name (not restating) than the current function name.
+2. If you can split up your function into reasonably different sections..
+
+Rule 3: Only one level of abstraction per function. 
+Abstraction levels can vary, such as the abstraction level of retrieving HTML text vs. abstraction level of parsing HTML vs. abstraction level of append to a file.
+The Stepdown Rule: Code should be read like a top-down narrative. Think of it like a story of "To" paragraphs.
+Each function will call each lower abstraction of a function, which basically means as you go down, you continuously define the function that was called above. Function definitions go directly below when the function gets called.
+
+Rule 4: Switch statements
