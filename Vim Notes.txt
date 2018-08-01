@@ -72,6 +72,11 @@ Find the word you are currently on - *#g*g# OR / + Ctrl + R + Ctrl + W (great
 if you want to put word into the command line as well)
 Search for the other bracket in a pair of brackets (include {}, [], and ()) - %
 Find the word in your line: Shift + V + /\%Vword_to_be_searched
+Find the line where word1, word2, and word3 are all in the same line but following each other (not exclusive to next to each other) - /^word1.*word2.*word3
+Find the whole word (no surrounding letters) in the document - :g/\<whole_word\>
+Find and select all text between word1 and word2 - /word1\_.\{-}word2 + gn
+Find and select all whitespace between word1 and word2 - /word1\_s\{-}word2 + gn
+Find two or more words - /word1\|word2\|word3\|wordN 
 
 Completion (must be in insert mode):
 Word Completion (auto fill out word) - Ctrl + N (does NOT start a new line) or Ctrl + P (starts a new line when you complete)
@@ -87,18 +92,11 @@ Set paste mode off - :set nopaste
 
 Find and Replace/Substitution:
 Find and Replace for first result in each line - :%s/search_for_this/replace_with_this/
-Find and Replace for all results in each line -
-:%s/search_for_this/replace_with_this/g
-Find and Replace for all results in each line, with Confirmation on each result -
-:%s/search_for_this/replace_with_this/gc
-Find and Replace for next result in current line -
-:s/search_for_this/replace_with_this/
-Find and Replace for all results in current line -
-:s/search_for_this/replace_with_this/g
-Find and Replace for first result in each line, but case insensitive -
-:%s/search_for_this/replace_with_this/i
-Find and Replace for all WHOLE words (no other letters surrounding it) -
-:%s/\<whole_word\>/replace_with_this/g
-Find and Replace for 2 or more words (multiple words) -
-:%s/word1\|word2\|wordN/replace_with_this/gc
+Find and Replace for all results in each line - :%s/search_for_this/replace_with_this/g
+Find and Replace for all results in each line, with Confirmation on each result - :%s/search_for_this/replace_with_this/gc
+Find and Replace for next result in current line - :s/search_for_this/replace_with_this/
+Find and Replace for all results in current line - :s/search_for_this/replace_with_this/g
+Find and Replace for first result in each line, but case insensitive - :%s/search_for_this/replace_with_this/i
+Find and Replace for all WHOLE words (no other letters surrounding it) - :%s/\<whole_word\>/replace_with_this/g
+Find and Replace for 2 or more words (multiple words) - :%s/word1\|word2\|wordN/replace_with_this/gc
 Find and Delete each line containing the word - g/delete_this_word/d
