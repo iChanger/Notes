@@ -24,5 +24,42 @@ https://ryanstutorials.net/linuxtutorial/navigation.php
 Grep:
 
 Redirection:
+|, >, >>
+Stdout, stderr, hwo to log things
+Commandf line IO redirect
+myexe.exe < my_input.txt < myout.txt
+
 https://ryanstutorials.net/linuxtutorial/piping.php
 https://ryanstutorials.net/linuxtutorial/cheatsheetgrep.php
+
+Alias:
+
+Scripting:
+
+Awk:
+
+Sed:
+
+Tail:
+tail -f name-of-logfile
+
+Cut:
+
+Diff:
+
+Man:
+
+Curl:
+
+Wget:
+
+Xargs:
+
+ps aux:
+
+Du:
+
+Ag:
+
+Tmux:
+
