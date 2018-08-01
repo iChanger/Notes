@@ -70,6 +70,7 @@ Clear highlighting after a search - :noh
 Find the word you are currently on - *#g*g# OR / + Ctrl + R + Ctrl + W (great
 if you want to put word into the command line as well)
 Search for the other bracket in a pair of brackets (include {}, [], and ()) - %
+Find the word in your line: Shift + V + /\%Vword_to_be_searched
 
 Completion (must be in insert mode):
 Word Completion (auto fill out word) - Ctrl + N or Ctrl + P
