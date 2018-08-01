@@ -72,16 +72,6 @@ Find the word you are currently on - *#g*g# OR / + Ctrl + R + Ctrl + W (great
 if you want to put word into the command line as well)
 Search for the other bracket in a pair of brackets (include {}, [], and ()) - %
 Find the word in your line: Shift + V + /\%Vword_to_be_searched
-ind the line where word1, word2, and word3 are all in the same line but
-following each other (not exclusive to next to each other) - 
-/^word1.*word2.*word3
-Find the whole word (no surrounding letters) in the document -
-:g/\<whole_word\>
-Find and select all text between word1 and word2 - /word1\_.\{-}word2 +
-gn
-Find and select all whitespace between word1 and word2 - /word1\_s\{-}word2 +
-gn
-Find two or more words - /word1\|word2\|word3\|wordN 
 
 Completion (must be in insert mode):
 Word Completion (auto fill out word) - Ctrl + N (does NOT start a new line) or Ctrl + P (starts a new line when you complete)
