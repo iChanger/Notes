@@ -111,4 +111,4 @@ Find and Replace for all WHOLE words (no other letters surrounding it) -
 :%s/\<whole_word\>/replace_with_this/g
 Find and Replace for 2 or more words (multiple words) -
 :%s/word1\|word2\|wordN/replace_with_this/gc
-Find and Delete each line containing the word - g/delete_this_word/d
+Find and Delete each line - g/delete_this_word/d
