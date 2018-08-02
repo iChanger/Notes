@@ -55,3 +55,21 @@ The Stepdown Rule: Code should be read like a top-down narrative. Think of it li
 Each function will call each lower abstraction of a function, which basically means as you go down, you continuously define the function that was called above. Function definitions go directly below when the function gets called.
 
 Rule 4: Switch statements
+Try to avoid at all costs, since it violates the Single Responsibility Principle and that it will grow constantly.
+If you must include: 
+1. Must be used only to create polymorphic objects (objects that can perform different functions as it adapts to different object types [such as an input of different obejct types])
+2. Hide it behind an inheritance relationship (such as an ABSTRACT Factory) so that the rest of the system can't read it.
+
+Rule 5: Use descriptive Names
+The smaller and unipurpose your functions are, the easier it is to give it descriptive, multi-word names that describes exactly what it does.
+Expect to spend time choosing a good name for the function. It's fine if the function name is long. Expect camel-cased names.
+TIP: BE Consistent in your nouns, verbs, and phrases!!! For example, "includeSetupPages" and "includeSuiteSetupPage" are consistent.
+
+Rule 6: Function Arguments
+The ideal number of arguments for a function is as small as possible.
+0 is the most ideal, followed by 1, followed by 2. Three or more arguments in a function should be avoided at ALL costs.
+Why? The argument is at a different abstraction level than the function name, so it forces you to remember and switch gears.
+Also, fewer arguments = much easier debugging for test cases.
+
+Common Mondaic Forms:
+

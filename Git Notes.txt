@@ -26,6 +26,17 @@ You can merge the branch with the origin.
 Note: branches are TEMPORARY. 
 Best option for hackathons.
 
+What is the HEAD?
+It is a pointer to the most current branch that you have most recently checked-out to. It includes all of your most recent changes to the working directory.
+In simpler words, it is a reference (a variable that points towards, or a variable that refers to) to the branch that includes your most recent edits to your files. This means HEAD will change per every commit you make.
+In simplest words, it is the branch you are currently working on. If you checkout (switch) to a new branch, then the HEAD will change to the new branch you switched to.
+If you have never checked-out (only cloned a repo), then the HEAD pointer is invalid.
+
+What are the three Git sections?
+Working Directory - The actual files of the repository. E.g. "code_file.cpp" is a part of the working directory.
+Staging Area - Snapshot of the changes to the files that you've made. It is, however, not committed yet to the commit tree. If you perform "git add .", you've added the files into the staging area.
+Commit Tree - The section that contains the entire change history of the repository. Contains all your commits, blobs, reverts, etc. "Git log" shows the commit tree.
+
 Rebase - Similar to Merge in git. However, Rebase takes the entire branch and "replaces the base" in front of the target branch. 
 Basically, you take the branch you are rebasing, then stick ALL of the commits of that branch in front of the target branch. 
 It is good to make the project history look cleaner by making it more linear. A project history full of merges will look very messy.
@@ -146,6 +157,8 @@ Review an older commit - git checkout HEAD_of_commit(e.g. a1e8fb5)
 Revert back to master commit - git checkout master
 Revert state to a previous commit - First, checkout to the commit you want to revert to. Then, type in: git checkout -b new_reverted_branch to create a new branch under the previous commit. Note: This will replace ALL commits after the reverted commit.
 ^ Don't use if on a public commit. Only use if you want a minimal Git history.
+NOTE: If you do NOT create a new branch, it will create a "deteached HEAD" state. What this means is that HEAD (refer to the HEAD definition above) will no longer point to a tangible branch (e.g. master), and will point to a TEMPORARY branch created by checking-out a previous commit. This is called detached HEAD. In this state, HEAD will refer to the old commit that you checked-out. Eventually, this temporary branch will be deleted by Git's garbage collection.
+NOTE 2: If you create a new branch (using the Revert State to a previous commit steps above), then HEAD will still be detached since it's not at the most recent commit and off at a detached branch. However, it will create a permanent branch called "new_reverted_branch," which is literally the old commit that HEAD points to (see NOTE above) but permanently saved and renamed to "new_reverted_branch", so it will NOT be deleted.
 NOTE: Best option for reviewing previous commits and changing the commit history.
 
 Revert:
@@ -168,3 +181,27 @@ Actually clean/delete the untracked files - git clean -f
 Clean untracked files AND directories - git clean -df
 Clean ignored AND untracked files - git clean -xf
 Clean files in interactive mode (lets you select which files/directories and which options) - git clean -i
+
+Revert:
+Creates a new commit of the inverse of a previous commit, called the "revert commit." You won't lose history using revert, which is important since the HEAD isn't moved to another place.
+Revert the latest commit - git revert HEAD
+Benefits over reset: 
+1. Doesn't change the project history
+2. Can undo a previous commit from an arbitrary part in history without having to re-commit subsequent changes (reset requires to revert all subsequent changes from an old, while revert maintains the subsequent changes)
+
+Reset:
+3 main options:
+Soft: git reset --soft - only uncommit changes, changes are still staged (green). Only the commit tree (HEAD) is resetted (which means you have to do "git commit")
+Mixed (default) - git reset --mixed - uncommit changes AND unstage changes, changes are still in the working tree (red). The staging index is resetted (which means you still have to redo "git add" to stage files)
+Hard: git reset --hard - uncommit, unstage, AND delete changes, the working directory is resetted. Changes are resetted so the files are like they've been never changed.
+
+Remove:
+Revoves a file in the working directory (deletes the actual file) and the staging index, and also untracks the file from a repository.
+Why better than the Unix rm? Because it also removes from the staging index, reducing file conflicts. Regular rm does NOT remove from staging index.
+Remove a file - git rm file
+Remove a file and override Git's safety check (checks if HEAD is consistent with the working directory & staging area) - git rm -f file
+Remove a directory and its files - git rm -r directory
+Removes a file in the staging area but does NOT delete the file (only untracks the file) - git rm --cached
+
+
+

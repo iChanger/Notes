@@ -20,10 +20,86 @@ Delete to the end of word: Alt-D
 
 Navigation Part 2:
 https://ryanstutorials.net/linuxtutorial/navigation.php
+Absolute path: Path in relation to the root (/)
+Relative path: Path in relation to the path you are currently on
+Print working directory (print current directory): pwd
+Home Directory: ~
+Current Directory: .
+Parent Directory (previous directory): ..
 
-Grep:
+Important locations:
+/etc/: Stores config files
+/var/log: Stores log files for programs
+/bin/: Common location for programs
+/usr/bin/: Location for programs on the system
+Tab-Completion: Press "Tab" to auto-complete paths for you
 
-Redirection:
+Files:
+How to type in files with spaces:
+1. Use Quotes: cd 'Fun Day.txt'
+2. Use Escape Character: cd 'Fun\ Day.txt'
+Show hidden files: ls -a [dir]
+Detect file type of a file: file [file.type]
+Create a blank file: touch file.type
+Make directory: mkdir Directory
+Remove directory: rmdir Directory
+Copy file/directory: cp file/directory
+Move OR rename file/directory: mv file/directory
+Remove file or directory: rm file OR rm -r directory
+
+Man:
+Very Important tool!
+Set of pages that explain every command available on your system.
+Usage: man <command to look up>
+Keyword Search in Manual Pages: man -k <search term>
+Cycle through manual pages: n
+Search in Manual Pages directly: /<term>
+
+Wildcard:
+Allows to create patterns to define files/directories.
+NOTE: you can combine any of the three wildcards
+Represent 0+ characters: * (e.g. file.* represents all file types of length of characters that are 0 or greater).
+Represent a single character: ? (e.g. file.??? represents all file types of three-length characters)
+Represent a range of characters: [] (includes regular expressions)
+More into the bracketed range ([]):
+Include names with char1, char2, char3, ..., charN in current position: [char1char2char3...charN]
+Include names that contain one of the chars/number in the range between charX and charY: [charX-charY] (- represents a range in between)
+Include names that do NOT contain any of the characters: [^char1char2...charN] (^ represents a reverse)
+Ex 1: ls [abc]* searches for all files that start with a, b, or c. 
+Ex 2: ls ?[abc]* searches for all files that have a, b, or c as their second character.
+Ex 3: ls *[0-5]* searches for all files that contain the numbers between 0 and 5 in their name. 
+Ex 4: ls ?[a-f]* searches for all files that contain a, b, c, d, e, or f in their second position.
+Ex 5: ls [^a-k]* searches for all files that do NOT contain the letters between a and k in the beginning.
+
+Permissions:
+Three main permissions:
+1. read (r) - view the file contents
+2. write (w) - change the file contents
+3. execute (x) - execute or run the file
+Three main sets of people:
+1. owner (u) - single person who owns the file
+2. group (g) - every file belongs to a single group of people
+3. others (o) - everyone else who is not the group or the owner
+4. all (a) - everybody, including owner, group, and others
+Change file permissions: chmod [permissions] file.name/directory
+[permissions]: [u/g/o/a][+/-][r/w/x] (+ means to grant permission, - means to revoke permission)
+Ex: chmod go+wx frog.png grants the group and owner write and execute permissions
+[permissions w/o octals]: [0-7][0-7][0-7] (the first digit represents owner, second represents group, third represents user)
+Basically, each binary in the octal represents an on/off switch for read, write, and execute (respective to each position in the bianry digits)
+Ex: chmod 755 frog.png grants the owner all permissions, while the group and user gets read/execute permissions
+^ Why? 7 in octal translates to 111 (read=1=ON,write=1,execute=1), 5 in octal translates to 101 (so read=1, write=0, execute=1). 
+View permissions of a file: ls -l
+View permissions of a directory: ls -ld
+
+Filters:
+Head:
+Tail:
+tail -f name-of-logfile
+
+Grep: 
+
+Redirection: 
+
 |, >, >>
 Stdout, stderr, hwo to log things
 Commandf line IO redirect
@@ -32,7 +108,7 @@ myexe.exe < my_input.txt < myout.txt
 https://ryanstutorials.net/linuxtutorial/piping.php
 https://ryanstutorials.net/linuxtutorial/cheatsheetgrep.php
 
-Alias:
+Alias: 
 
 Scripting:
 
@@ -40,14 +116,11 @@ Awk:
 
 Sed:
 
-Tail:
-tail -f name-of-logfile
+Wc: 
 
 Cut:
 
 Diff:
-
-Man:
 
 Curl:
 
@@ -62,4 +135,3 @@ Du:
 Ag:
 
 Tmux:
-
